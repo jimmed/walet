@@ -33,7 +33,6 @@ Themes are comprised of:
 ### Core
 
 - [x] Generate colour scheme from an image buffer
-- [ ] Generate theme from image URL
 - [ ] Allow choice of colour scheme backend
 
 ### Web UI
@@ -55,6 +54,8 @@ Who am I kidding? Definitely GraphQL.
 
 ### CLI
 
+- [x] Generate theme from file path or URL
+- [x] Generate 'light' themes via command-line switch
 - [ ] Set current WAL theme from unique theme ID
 - [ ] Local cache of themes for offline use
 

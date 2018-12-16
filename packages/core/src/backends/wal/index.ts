@@ -1,7 +1,8 @@
-import { ColourSchemeBackend, ColourScheme, Image } from "../types";
-import { spawn } from "child_process";
-import { promisify } from "util";
-import { Colour } from "../colour";
+import { ColourScheme } from "../../types";
+import { ColourSchemeBackend } from "../types";
+import { spawn } from "./spawn";
+import { getImageMagick } from "./imageMagick";
+import { Colour } from "../../colour";
 
 const LIGHT_GREY = Colour.fromHex("EEE");
 
@@ -11,8 +12,8 @@ const LIGHT_GREY = Colour.fromHex("EEE");
  * @see https://github.com/dylanaraps/pywal/blob/master/pywal/backends/wal.py
  */
 export class WalColourSchemeBackend implements ColourSchemeBackend {
-  magickCommand: string;
-  constructor(magickCommand: string = "convert") {
+  magickCommand: string[];
+  constructor(magickCommand?: string[]) {
     this.magickCommand = magickCommand;
   }
 
@@ -25,28 +26,18 @@ export class WalColourSchemeBackend implements ColourSchemeBackend {
       .map(([match]) => match);
   }
 
-  async runMagick(args: string, stdin: Buffer): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const stdout = [];
-      const stderr = [];
+  async getMagickCommand(): Promise<string[]> {
+    if (!this.magickCommand) {
+      this.magickCommand = await getImageMagick();
+    }
+    return this.magickCommand;
+  }
 
-      const magick = spawn(`${this.magickCommand} ${args}`);
-      magick.on("error", reject);
-      magick.on("close", errorCode => {
-        console.log({ stdout, stderr });
-        if (errorCode) {
-          reject(stderr.join(""));
-        } else {
-          resolve(stdout.join(""));
-        }
-      });
+  async runMagick(args: string[], stdin: Buffer): Promise<string> {
+    const [command, ...magickArgs] = await this.getMagickCommand();
+    const cmdArgs = [...magickArgs, ...args];
 
-      magick.stdout.on("data", chunk => stdout.push(chunk));
-      magick.stderr.on("data", chunk => stderr.push(chunk));
-
-      magick.stdin.write(stdin);
-      magick.stdin.end();
-    });
+    return spawn(command, cmdArgs, stdin);
   }
 
   async generate(
@@ -65,7 +56,15 @@ export class WalColourSchemeBackend implements ColourSchemeBackend {
         console.warn(`Trying palette size: ${colourCount}`);
       }
       const result = await this.runMagick(
-        "- -size 25% -colors ${colourCount} -unique-colors txt:-",
+        [
+          "-",
+          "-size",
+          "25%",
+          "-colors",
+          colourCount.toString(),
+          "-unique-colors",
+          "txt:-"
+        ],
         buffer
       );
       results = result.split(/\r?\n/g);

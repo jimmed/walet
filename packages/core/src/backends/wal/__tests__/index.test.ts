@@ -1,6 +1,6 @@
-import { WalColourSchemeBackend } from "../wal";
-import { Colour } from '../../colour'
-import { ColourScheme } from '../../types'
+import { WalColourSchemeBackend } from "../index";
+import { Colour } from '../../../colour'
+import { ColourScheme } from '../../../types'
 import * as childProcess from "child_process";
 
 const mockMagickOutput = [

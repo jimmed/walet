@@ -31,31 +31,32 @@ export class Colour implements RgbColour {
   }
 
   static fromHslArray([h, s, l]: ColourArray): Colour {
+    const H = (h + 360) % 360;
     const c = (1 - Math.abs(2 * l - 1)) * s;
-    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+    const x = c * (1 - Math.abs(((H / 60) % 2) - 1));
     const m = l - c / 2;
     let [r, g, b]: ColourArray = [0, 0, 0];
     switch (true) {
-      case 0 <= h && h < 60:
+      case 0 <= H && H < 60:
         [r, g, b] = [c, x, 0];
         break;
-      case 60 <= h && h < 120:
+      case 60 <= H && H < 120:
         [r, g, b] = [x, c, 0];
         break;
-      case 120 <= h && h < 180:
+      case 120 <= H && H < 180:
         [r, g, b] = [0, c, x];
         break;
-      case 180 <= h && h < 240:
+      case 180 <= H && H < 240:
         [r, g, b] = [0, x, c];
         break;
-      case 240 <= h && h < 300:
+      case 240 <= H && H < 300:
         [r, g, b] = [x, 0, c];
         break;
-      case 300 <= h && h < 360:
+      case 300 <= H && H < 360:
         [r, g, b] = [c, 0, x];
         break;
       default:
-        throw new Error("Error in HSL to RGB conversion");
+        throw new Error(`Error in HSL to RGB conversion (h=${H})`);
     }
     const [R, G, B] = [r, g, b].map(n => Math.round((n + m) * 255));
     return new this(R, G, B);
@@ -75,7 +76,9 @@ export class Colour implements RgbColour {
     suffix: string = "",
     radix: number = 16
   ): string {
-    const hexParts = this.toRgbArray().map(x => x.toString(radix));
+    const hexParts = this.toRgbArray().map(x =>
+      x.toString(radix).padStart(2, "0")
+    );
     return [prefix, hexParts.join(separator), suffix].join("");
   }
 
@@ -135,8 +138,8 @@ export class Colour implements RgbColour {
   blend(colour: Colour): Colour {
     const [r1, g1, b1] = this.toRgbArray();
     const [r2, g2, b2] = colour.toRgbArray();
-    const [r3, g3, b3] = [[r1, r2], [g1, g2], [b1, b2]].map(
-      ([a, b]) => Math.round((a + b) / 2)
+    const [r3, g3, b3] = [[r1, r2], [g1, g2], [b1, b2]].map(([a, b]) =>
+      Math.round((a + b) / 2)
     );
     return Colour.fromRgbArray([r3, g3, b3]);
   }
