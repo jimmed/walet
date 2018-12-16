@@ -8,10 +8,9 @@ Web UI, API and CLI for previewing and sharing WAL-based terminal themes.
 
 ## Project Structure/Standards
 
-- [Yarn workspace setup](https://medium.com/trabe/monorepo-setup-with-lerna-and-yarn-workspaces-5d747d7c0e91) (monorepo)
-- Babel + (prettier-)ESlint
-- External-facing type definitions (TypeScript + Flow)
-- Jest for unit tests
+- lerna monorepo (with yarn workspaces)
+- TypeScript codebase
+- Jest unit tests
 
 ```
 docs/
