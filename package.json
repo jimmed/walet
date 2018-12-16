@@ -9,8 +9,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "build:watch": "lerna run build --stream -- --watch",
+    "build": "tsc -b",
+    "build:watch": "tsc -b --watch",
     "test": "lerna run test",
     "test:watch": "lerna run test --stream -- --watch"
   },
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "husky": "^1.2.1",
-    "lerna": "^2.9.0"
+    "lerna": "^2.9.0",
+    "typescript": "^3.2.2"
   }
 }
