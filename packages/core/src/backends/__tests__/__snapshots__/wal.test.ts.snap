@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalColourSchemeBackend class methods adjustColours in dark mode should match the snapshot 1`] = `
+Array [
+  Colour {
+    "b": 15,
+    "g": 22,
+    "r": 23,
+  },
+  Colour {
+    "b": 42,
+    "g": 103,
+    "r": 145,
+  },
+  Colour {
+    "b": 80,
+    "g": 109,
+    "r": 155,
+  },
+  Colour {
+    "b": 106,
+    "g": 131,
+    "r": 127,
+  },
+  Colour {
+    "b": 78,
+    "g": 152,
+    "r": 183,
+  },
+  Colour {
+    "b": 95,
+    "g": 150,
+    "r": 169,
+  },
+  Colour {
+    "b": 151,
+    "g": 175,
+    "r": 211,
+  },
+  Colour {
+    "b": 95,
+    "g": 108,
+    "r": 119,
+  },
+  Colour {
+    "b": 67,
+    "g": 76,
+    "r": 83,
+  },
+  Colour {
+    "b": 42,
+    "g": 103,
+    "r": 145,
+  },
+  Colour {
+    "b": 80,
+    "g": 109,
+    "r": 155,
+  },
+  Colour {
+    "b": 106,
+    "g": 131,
+    "r": 127,
+  },
+  Colour {
+    "b": 78,
+    "g": 152,
+    "r": 183,
+  },
+  Colour {
+    "b": 95,
+    "g": 150,
+    "r": 169,
+  },
+  Colour {
+    "b": 151,
+    "g": 175,
+    "r": 211,
+  },
+  Colour {
+    "b": 95,
+    "g": 108,
+    "r": 119,
+  },
+]
+`;
+
+exports[`WalColourSchemeBackend class methods adjustColours in light mode should match the snapshot 1`] = `
+Array [
+  Colour {
+    "b": 242,
+    "g": 247,
+    "r": 251,
+  },
+  Colour {
+    "b": 47,
+    "g": 102,
+    "r": 140,
+  },
+  Colour {
+    "b": 59,
+    "g": 104,
+    "r": 176,
+  },
+  Colour {
+    "b": 59,
+    "g": 178,
+    "r": 159,
+  },
+  Colour {
+    "b": 68,
+    "g": 156,
+    "r": 193,
+  },
+  Colour {
+    "b": 70,
+    "g": 162,
+    "r": 194,
+  },
+  Colour {
+    "b": 144,
+    "g": 174,
+    "r": 218,
+  },
+  Colour {
+    "b": 15,
+    "g": 22,
+    "r": 23,
+  },
+  Colour {
+    "b": 103,
+    "g": 121,
+    "r": 136,
+  },
+  Colour {
+    "b": 47,
+    "g": 102,
+    "r": 140,
+  },
+  Colour {
+    "b": 59,
+    "g": 104,
+    "r": 176,
+  },
+  Colour {
+    "b": 59,
+    "g": 178,
+    "r": 159,
+  },
+  Colour {
+    "b": 68,
+    "g": 156,
+    "r": 193,
+  },
+  Colour {
+    "b": 70,
+    "g": 162,
+    "r": 194,
+  },
+  Colour {
+    "b": 144,
+    "g": 174,
+    "r": 218,
+  },
+  Colour {
+    "b": 15,
+    "g": 22,
+    "r": 23,
+  },
+]
+`;

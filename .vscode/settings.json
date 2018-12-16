@@ -1,0 +1,6 @@
+{
+  "javascript.format.enable": true,
+  "javascript.validate.enable": true,
+  "jest.autoEnable": false,
+  "jest.enableCodeLens": false
+}

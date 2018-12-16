@@ -1,7 +1,28 @@
 {
+  "private": true,
   "name": "walet",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Tools for generating and sharing system colour themes",
   "author": "Jim O'Brien <jim@jimmed.net>",
-  "license": "MIT"
+  "license": "WTFPL",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "build:watch": "lerna run build --stream -- --watch",
+    "test": "lerna run test",
+    "test:watch": "lerna run test --stream -- --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run test",
+      "pre-push": "yarn run test",
+      "pre-publish": "yarn run build"
+    }
+  },
+  "devDependencies": {
+    "husky": "^1.2.1",
+    "lerna": "^2.9.0"
+  }
 }

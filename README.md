@@ -17,8 +17,8 @@ Web UI, API and CLI for previewing and sharing WAL-based terminal themes.
 docs/
 packages/
   core/     Core functionality (i.e. theme generation)
-  ui/       User interface for webapp
   cli/      Command-line tool
+  ui/       User interface for webapp
   web/      Web API (probably the GraphQL part)
 ```
 
@@ -30,6 +30,12 @@ Themes are comprised of:
 - An image URL
 - The hash of the resolved image
 - A colour scheme
+
+### Core
+
+- [x] Generate colour scheme from an image buffer
+- [ ] Generate theme from image URL
+- [ ] Allow choice of colour scheme backend
 
 ### Web UI
 
