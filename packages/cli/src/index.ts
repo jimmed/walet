@@ -16,16 +16,18 @@ const { argv } = yargs(process.argv).command({
   builder: (yargs: yargs.Argv) =>
     yargs
       .option("image", {
-        alias: ["url", "path"],
+        alias: ["i", "url", "path"],
         type: "string",
         describe: "The URL or path of the image"
       })
       .option("light", {
+        alias: ["l"],
         type: "boolean",
         default: false,
         describe: "Generate a light theme (instead of dark)"
       })
       .option("backend", {
+        alias: ["b"],
         type: "string",
         choices: Object.keys(backends),
         default: "vibrant"
