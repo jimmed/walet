@@ -9,7 +9,8 @@
   "license": "WTFPL",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn run test && yarn run build && pkg-ok"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -18,6 +19,7 @@
     "@types/node-fetch": "^2.1.4",
     "@types/which": "^1.3.1",
     "jest": "^23.6.0",
+    "pkg-ok": "^2.3.1",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },

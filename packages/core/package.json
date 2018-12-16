@@ -6,13 +6,15 @@
   "license": "WTFPL",
   "scripts": {
     "build": "tsc",
-    "test": "jest --config ./jest.config.js"
+    "test": "jest --config ./jest.config.js",
+    "prepublishOnly": "yarn run test && yarn run build && pkg-ok"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.15",
     "@types/node-fetch": "^2.1.4",
     "jest": "^23.6.0",
+    "pkg-ok": "^2.3.1",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },
