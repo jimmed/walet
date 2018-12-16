@@ -1,7 +1,7 @@
 import { WalColourSchemeBackend } from "../index";
-import { Colour } from '../../../colour'
-import { ColourScheme } from '../../../types'
-import * as childProcess from "child_process";
+import { Colour } from '../../../colour';
+import { ColourScheme } from '../../../types';
+import { spawn } from '../spawn';
 
 const mockMagickOutput = [
   "# ImageMagick pixel enumeration: 16,1,65535,srgb",
@@ -22,6 +22,10 @@ const mockMagickOutput = [
   "14,0: (57320,51588,44974)  #DFC9AF  srgb(223,201,175)",
   "15,0: (52076,51569,49557)  #CBC9C1  srgb(203,201,193)"
 ];
+
+jest.mock('../spawn', () => ({
+  spawn: jest.fn(() => Promise.resolve(mockMagickOutput.join('\n')))
+}))
 
 const mockHexCodes = [
   "#17160F",
@@ -109,8 +113,7 @@ describe("WalColourSchemeBackend", () => {
       })
     })
 
-    // FIXME: Need to mock child_process.spawn
-    xdescribe("generate", () => {
+    describe("generate", () => {
       let result: ColourScheme;
       beforeEach(async () => {
         const buffer = Buffer.from([1, 2, 3]);
@@ -118,15 +121,17 @@ describe("WalColourSchemeBackend", () => {
       })
 
       it("should run `convert` with the right arguments", () => {
-        expect(childProcess.spawn).toHaveBeenCalledWith(
+        expect(spawn).toHaveBeenCalledWith(
           'convert',
-          ['-','-size','25%','-colors','16','-unique-colors','txt:-']
+          ['-','-size','25%','-colors','16','-unique-colors','txt:-'],
+          expect.any(Buffer)
         )
       });
 
       it('should return an array of colours', () => {
+        expect(result).toHaveProperty('colours')
         result.colours.forEach(item => expect(item).toBeInstanceOf(Colour))
-        expect(result.colours).toMatchSnapshot()
+        expect(result).toMatchSnapshot();
       })
     });
   });

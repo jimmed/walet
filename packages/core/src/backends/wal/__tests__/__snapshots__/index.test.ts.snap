@@ -169,3 +169,91 @@ Array [
   },
 ]
 `;
+
+exports[`WalColourSchemeBackend class methods generate should return an array of colours 1`] = `
+Object {
+  "colours": Array [
+    Colour {
+      "b": 15,
+      "g": 22,
+      "r": 23,
+    },
+    Colour {
+      "b": 42,
+      "g": 103,
+      "r": 145,
+    },
+    Colour {
+      "b": 80,
+      "g": 109,
+      "r": 155,
+    },
+    Colour {
+      "b": 106,
+      "g": 131,
+      "r": 127,
+    },
+    Colour {
+      "b": 78,
+      "g": 152,
+      "r": 183,
+    },
+    Colour {
+      "b": 95,
+      "g": 150,
+      "r": 169,
+    },
+    Colour {
+      "b": 151,
+      "g": 175,
+      "r": 211,
+    },
+    Colour {
+      "b": 95,
+      "g": 108,
+      "r": 119,
+    },
+    Colour {
+      "b": 67,
+      "g": 76,
+      "r": 83,
+    },
+    Colour {
+      "b": 42,
+      "g": 103,
+      "r": 145,
+    },
+    Colour {
+      "b": 80,
+      "g": 109,
+      "r": 155,
+    },
+    Colour {
+      "b": 106,
+      "g": 131,
+      "r": 127,
+    },
+    Colour {
+      "b": 78,
+      "g": 152,
+      "r": 183,
+    },
+    Colour {
+      "b": 95,
+      "g": 150,
+      "r": 169,
+    },
+    Colour {
+      "b": 151,
+      "g": 175,
+      "r": 211,
+    },
+    Colour {
+      "b": 95,
+      "g": 108,
+      "r": 119,
+    },
+  ],
+  "light": false,
+}
+`;
