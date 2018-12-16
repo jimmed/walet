@@ -1,6 +1,6 @@
 import { parse as parseUrl } from "url";
 import { resolve as resolvePath } from "path";
-import { ColourSchemeBackend, ColourScheme } from "@walet/core/dist/types";
+import { ColourSchemeBackend, ColourScheme } from "@walet/core";
 import fetch from "node-fetch";
 import { readFile as readFileAsync } from "fs";
 import { promisify } from "util";
