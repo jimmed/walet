@@ -6,36 +6,37 @@
 
 Web UI, API and CLI for previewing and sharing WAL-based terminal themes.
 
-## Project Structure/Standards
+## Project Structure
 
-- lerna monorepo (with yarn workspaces)
-- TypeScript codebase
-- Jest unit tests
+### Monorepo
 
-```
-docs/
-packages/
-  core/     Core functionality (i.e. theme generation)
-  cli/      Command-line tool
-  ui/       User interface for webapp
-  web/      Web API (probably the GraphQL part)
-```
+This project is a monorepo, which (in this case) means that it is a single git repository, containing multiple node.js modules.
 
-## MVP Features
+Each of these modules will be published on npm under the `@walet` scope.
 
-Themes are comprised of:
+### Source Code
 
-- A unique identifier
-- An image URL
-- The hash of the resolved image
-- A colour scheme
+All source is written in TypeScript. As much as possible:
 
-### Core
+- use of the `any` type is avoided
+- functional paradigms are preferred over imperative ones.
+
+### Linting / Formatting
+
+No linting is currently performed. It is likely that this will be added in the future, in combination with enforced autoformatting.
+
+### Unit Testing
+
+Unit tests are written in Jest. There is a target test coverage ratio of 80% expected before the project can be considered even slightly stable.
+
+## Package Features / Roadmap
+
+### Core (`@walet/core`)
 
 - [x] Generate colour scheme from an image buffer
 - [ ] Allow choice of colour scheme backend
 
-### Web UI
+### Web UI (`@walet/web`)
 
 - [ ] Preview themes on fake desktop ('rice style') from URL
 - [ ] Create new themes
@@ -43,7 +44,7 @@ Themes are comprised of:
   - [ ] Generage theme from image using WALgorithm
   - [ ] Generate shareable URL
 
-### API
+### API (`@walet/api`)
 
 Probably GraphQL.
 
@@ -52,20 +53,17 @@ Who am I kidding? Definitely GraphQL.
 - [ ] Create theme from image URL
 - [ ] Get theme from unique ID
 
-### CLI
+### CLI (`@walet/cli`)
 
 - [x] Generate theme from file path or URL
 - [x] Generate 'light' themes via command-line switch
 - [ ] Set current WAL theme from unique theme ID
 - [ ] Local cache of themes for offline use
 
-## Second Phase Features
+## Future Possible Features
 
 - [ ] Authentication / user accounts
 - [ ] Per-user 'library' of created/liked themes
-
-## Other Possibilities
-
 - [ ] Customizable previews
   - [ ] Choice of window manager
   - [ ] Different preview windows
